@@ -208,6 +208,11 @@ html {
     color: #737373;
 }
 
+/* Navbar phone button dark mode */
+.dark-mode .nav-phone-btn {
+    color: #333333;
+}
+
 /* Navbar scrolled in dark mode */
 .dark-mode #navbar.scrolled {
     background: rgba(20, 20, 20, 0.95);
