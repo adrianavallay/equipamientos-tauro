@@ -1,0 +1,487 @@
+/* ============================================
+   Equipamientos Tauro - Custom Styles
+   Design System: Trust & Authority + Hero-Centric
+   Fonts: Poppins / Open Sans
+   ============================================ */
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Selection */
+::selection {
+    background-color: #D4A853;
+    color: #0F172A;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+    background: #D4A853;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c49a47;
+}
+
+/* ============================================
+   Dark Mode Theme Toggle
+   ============================================ */
+.dark-mode #theme-knob {
+    transform: translateX(24px);
+}
+.dark-mode .theme-icon-sun {
+    opacity: 0.3;
+}
+.theme-icon-moon {
+    opacity: 0.3;
+}
+.dark-mode .theme-icon-moon {
+    opacity: 1;
+}
+
+/* ============================================
+   Dark Mode Overrides (Neutral Dark Gray)
+   ============================================ */
+.dark-mode {
+    background-color: #141414;
+    color: #E5E5E5;
+}
+
+/* About section */
+.dark-mode #about {
+    background-color: #1A1A1A;
+}
+.dark-mode #about h2,
+.dark-mode #about h4 {
+    color: #F5F5F5;
+}
+.dark-mode #about p {
+    color: #A3A3A3;
+}
+
+/* Services section */
+.dark-mode #services {
+    background-color: #141414;
+}
+.dark-mode .service-card {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode .service-card:hover {
+    border-color: #D4A853;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.dark-mode .service-card h3 {
+    color: #F5F5F5;
+}
+.dark-mode .service-card p,
+.dark-mode .service-card li {
+    color: #A3A3A3;
+}
+.dark-mode .service-card::before {
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.08), transparent);
+}
+
+/* Trust items */
+.dark-mode .trust-item {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode .trust-item span:first-of-type {
+    color: #F5F5F5;
+}
+.dark-mode .trust-item span:last-of-type {
+    color: #737373;
+}
+
+/* Products section */
+.dark-mode #products {
+    background-color: #1A1A1A;
+}
+.dark-mode #products h2 {
+    color: #F5F5F5;
+}
+.dark-mode .product-card {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode .product-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.dark-mode .product-card h3 {
+    color: #F5F5F5;
+}
+.dark-mode .product-card p {
+    color: #737373;
+}
+.dark-mode .product-filter {
+    background: #222222;
+    color: #A3A3A3;
+}
+.dark-mode .product-filter:hover {
+    background: #D4A853;
+    color: #141414;
+}
+.dark-mode .product-filter.active {
+    background: #D4A853;
+    color: #141414;
+}
+
+/* Contact section */
+.dark-mode #contact {
+    background-color: #141414;
+}
+.dark-mode #contact h2 {
+    color: #F5F5F5;
+}
+.dark-mode .contact-fill-card {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode .contact-fill-card h4 {
+    color: #F5F5F5;
+}
+.dark-mode .contact-fill-card p {
+    color: #A3A3A3;
+}
+.dark-mode .contact-info-card {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode .contact-info-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.dark-mode .contact-info-card h4 {
+    color: #F5F5F5;
+}
+.dark-mode .contact-info-card p,
+.dark-mode .contact-info-card a {
+    color: #A3A3A3;
+}
+.dark-mode #contact .bg-white {
+    background-color: #222222;
+    border-color: #333333;
+}
+.dark-mode #contact h3 {
+    color: #F5F5F5;
+}
+.dark-mode #contact input,
+.dark-mode #contact textarea {
+    background-color: #1A1A1A;
+    border-color: #333333;
+    color: #E5E5E5;
+}
+.dark-mode #contact input::placeholder,
+.dark-mode #contact textarea::placeholder {
+    color: #737373;
+}
+.dark-mode #contact input:focus,
+.dark-mode #contact textarea:focus {
+    border-color: #D4A853;
+    box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.15);
+}
+.dark-mode #contact label {
+    color: #D4D4D4;
+}
+
+/* Section titles & text */
+.dark-mode .section-title {
+    color: #F5F5F5;
+}
+.dark-mode .text-primary {
+    color: #F5F5F5;
+}
+.dark-mode p.text-secondary\/70,
+.dark-mode .text-secondary\/70 {
+    color: #A3A3A3;
+}
+.dark-mode p.text-secondary\/60,
+.dark-mode .text-secondary\/60 {
+    color: #737373;
+}
+
+/* Navbar scrolled in dark mode */
+.dark-mode #navbar.scrolled {
+    background: rgba(20, 20, 20, 0.95);
+}
+
+/* Scrollbar dark */
+.dark-mode::-webkit-scrollbar-track {
+    background: #141414;
+}
+
+/* ============================================
+   Preloader
+   ============================================ */
+#preloader {
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-line {
+    width: 0;
+    animation: preloaderLine 1.5s ease-out forwards;
+}
+
+@keyframes preloaderLine {
+    to { width: 100%; }
+}
+
+/* ============================================
+   Navbar
+   ============================================ */
+#navbar {
+    background: transparent;
+}
+#navbar.scrolled {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+#navbar.scrolled .nav-logo-text,
+#navbar.scrolled .nav-logo-sub {
+    color: white;
+}
+
+/* ============================================
+   Hero Scroll Dot Animation
+   ============================================ */
+.scroll-dot {
+    animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(16px); opacity: 0.3; }
+}
+
+/* ============================================
+   Floating Badge Animations
+   ============================================ */
+.floating-badge {
+    animation: floatBadge 4s ease-in-out infinite;
+}
+.floating-badge-2 {
+    animation: floatBadge 5s ease-in-out infinite 1s;
+}
+
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* ============================================
+   Product Filter Buttons
+   ============================================ */
+.product-filter {
+    background: #E8ECF1;
+    color: #334155;
+}
+.product-filter:hover {
+    background: #D4A853;
+    color: #0F172A;
+}
+.product-filter.active {
+    background: #0F172A;
+    color: white;
+}
+
+/* ============================================
+   Product Cards Animation
+   ============================================ */
+.product-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.product-card.hidden-card {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
+    pointer-events: none;
+}
+.product-card.visible-card {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+    pointer-events: auto;
+}
+
+/* ============================================
+   Service Card Shine Effect
+   ============================================ */
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(212, 168, 83, 0.05),
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+.service-card:hover::before {
+    left: 100%;
+}
+
+/* ============================================
+   Counter Animation Support
+   ============================================ */
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Contact Fill Cards (hover paint effect)
+   ============================================ */
+.contact-fill-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.contact-fill-card:hover {
+    transform: translateY(-6px);
+}
+.contact-fill-bg {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Contact Info Cards (form side)
+   ============================================ */
+.contact-info-card {
+    transition: all 0.3s ease;
+}
+.contact-info-card:hover {
+    transform: translateX(8px);
+}
+
+/* ============================================
+   Form Focus Effects
+   ============================================ */
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.15);
+}
+
+/* ============================================
+   Magnetic Button Effect (for hero CTA)
+   ============================================ */
+.magnetic-btn {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Section Reveal Animations (GSAP targets)
+   ============================================ */
+.section-title,
+.service-card,
+.product-card,
+.contact-info-card,
+.about-image,
+.about-content,
+.hero-badge,
+.hero-title span,
+.hero-desc,
+.hero-cta,
+.hero-stats,
+.hero-visual,
+.cta-title {
+    will-change: transform, opacity;
+}
+
+/* ============================================
+   WhatsApp Glow Effect
+   ============================================ */
+.whatsapp-btn {
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4), 0 0 40px rgba(37, 211, 102, 0.2);
+}
+.whatsapp-glow {
+    background: rgba(37, 211, 102, 0.3);
+    animation: whatsappGlow 2s ease-in-out infinite;
+}
+
+@keyframes whatsappGlow {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0;
+        box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0);
+    }
+}
+
+/* ============================================
+   Testimonial Slider
+   ============================================ */
+.testimonial-track {
+    will-change: transform;
+}
+
+.fill-gold {
+    fill: #D4A853;
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .scroll-dot,
+    .floating-badge,
+    .floating-badge-2 {
+        animation: none;
+    }
+}
+
+/* ============================================
+   Responsive Tweaks
+   ============================================ */
+@media (max-width: 768px) {
+    .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    .hero-stats span:first-child {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    #products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}

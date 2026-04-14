@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipamientos Tauro | Equipamiento Comercial Premium en San Mart&iacute;n</title>
+    <meta name="description" content="Equipamientos Tauro - M&aacute;s de 15 a&ntilde;os equipando comercios y negocios. Venta, servicio t&eacute;cnico y asesoramiento en San Mart&iacute;n, Buenos Aires.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#334155',
+                        accent: '#0369A1',
+                        'accent-light': '#0EA5E9',
+                        surface: '#F8FAFC',
+                        muted: '#E8ECF1',
+                        border: '#E2E8F0',
+                        gold: '#D4A853',
+                        'gold-light': '#F5DEB3',
+                    },
+                    fontFamily: {
+                        heading: ['Poppins', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif'],
+                    },
+                    fill: {
+                        gold: '#D4A853',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white font-body text-primary overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-primary flex items-center justify-center">
+        <div class="text-center">
+            <div class="preloader-logo">
+                <span class="text-4xl font-heading font-bold text-white tracking-wider">TAURO</span>
+                <div class="h-0.5 bg-gold mt-2 preloader-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                        <span class="text-primary font-heading font-bold text-lg">T</span>
+                    </div>
+                    <div>
+                        <span class="text-white font-heading font-bold text-xl tracking-wide nav-logo-text">TAURO</span>
+                        <span class="block text-xs text-white/60 font-light tracking-widest uppercase nav-logo-sub">Equipamientos</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden lg:flex items-center gap-8">
+                    <li><a href="#hero" class="nav-link text-white/80 hover:text-gold text-sm font-medium tracking-wide uppercase transition-colors duration-300">Inicio</a></li>
+                    <li><a href="#about" class="nav-link text-white/80 hover:text-gold text-sm font-medium tracking-wide uppercase transition-colors duration-300">Nosotros</a></li>
+                    <li><a href="#services" class="nav-link text-white/80 hover:text-gold text-sm font-medium tracking-wide uppercase transition-colors duration-300">Servicios</a></li>
+                    <li><a href="#products" class="nav-link text-white/80 hover:text-gold text-sm font-medium tracking-wide uppercase transition-colors duration-300">Productos</a></li>
+                    <li><a href="#contact" class="nav-link text-white/80 hover:text-gold text-sm font-medium tracking-wide uppercase transition-colors duration-300">Contacto</a></li>
+                </ul>
+
+                <!-- CTA + Dark Mode + Mobile Toggle -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:01167549667" class="hidden lg:flex items-center gap-2 bg-gold text-primary px-5 py-2.5 rounded-lg font-heading font-semibold text-sm hover:bg-gold-light transition-all duration-300 hover:scale-105">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        (011) 6754-9667
+                    </a>
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="theme-toggle" class="relative w-14 h-8 bg-white/10 border border-white/20 rounded-full flex items-center px-1 cursor-pointer transition-colors duration-300 hover:bg-white/20" aria-label="Cambiar modo claro/oscuro">
+                        <i data-lucide="sun" class="theme-icon-sun w-4 h-4 text-gold absolute left-1.5 top-1/2 -translate-y-1/2 transition-opacity duration-300"></i>
+                        <i data-lucide="moon" class="theme-icon-moon w-4 h-4 text-accent-light absolute right-1.5 top-1/2 -translate-y-1/2 transition-opacity duration-300"></i>
+                        <span id="theme-knob" class="w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 relative z-10"></span>
+                    </button>
+                    <button id="mobile-toggle" class="lg:hidden text-white p-2" aria-label="Abrir menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-primary/98 backdrop-blur-xl border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
+                <a href="#hero" class="mobile-nav-link block text-white/80 hover:text-gold text-lg font-medium py-2 transition-colors">Inicio</a>
+                <a href="#about" class="mobile-nav-link block text-white/80 hover:text-gold text-lg font-medium py-2 transition-colors">Nosotros</a>
+                <a href="#services" class="mobile-nav-link block text-white/80 hover:text-gold text-lg font-medium py-2 transition-colors">Servicios</a>
+                <a href="#products" class="mobile-nav-link block text-white/80 hover:text-gold text-lg font-medium py-2 transition-colors">Productos</a>
+                <a href="#contact" class="mobile-nav-link block text-white/80 hover:text-gold text-lg font-medium py-2 transition-colors">Contacto</a>
+                <a href="tel:01167549667" class="inline-flex items-center gap-2 bg-gold text-primary px-5 py-3 rounded-lg font-heading font-semibold text-sm mt-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    (011) 6754-9667
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary via-[#1a2744] to-[#0c1929]"></div>
+        <!-- Animated grid pattern -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <!-- Floating geometric shapes -->
+        <div class="hero-shape absolute top-20 right-20 w-72 h-72 bg-gold/5 rounded-full blur-3xl"></div>
+        <div class="hero-shape absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        <div class="hero-shape absolute top-1/2 right-1/3 w-48 h-48 border border-gold/10 rounded-full"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-0 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div>
+                    <!-- Badge -->
+                    <div class="hero-badge inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
+                        <span class="w-2 h-2 bg-gold rounded-full animate-pulse"></span>
+                        <span class="text-white/70 text-sm font-medium">M&aacute;s de 15 a&ntilde;os de experiencia</span>
+                    </div>
+
+                    <h1 class="hero-title font-heading font-bold text-white leading-[1.1] mb-6">
+                        <span class="text-4xl md:text-5xl lg:text-6xl block">Equipamiento</span>
+                        <span class="text-4xl md:text-5xl lg:text-6xl block">Comercial</span>
+                        <span class="text-4xl md:text-5xl lg:text-6xl text-gold block">Profesional</span>
+                    </h1>
+
+                    <p class="hero-desc text-white/60 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg">
+                        Soluciones integrales para comercios y gastronom&iacute;a. Venta, servicio t&eacute;cnico y asesoramiento personalizado en San Mart&iacute;n, Buenos Aires.
+                    </p>
+
+                    <div class="hero-cta flex flex-wrap gap-4">
+                        <a href="#products" class="group inline-flex items-center gap-3 bg-gold text-primary px-8 py-4 rounded-xl font-heading font-semibold text-base hover:bg-gold-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gold/20">
+                            Ver Productos
+                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-xl font-heading font-medium text-base hover:bg-white/5 transition-all duration-300">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            Contactar
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="hero-stats grid grid-cols-3 gap-6 mt-14 pt-10 border-t border-white/10">
+                        <div>
+                            <span class="block text-3xl lg:text-4xl font-heading font-bold text-gold counter" data-target="15">0</span>
+                            <span class="text-white/50 text-sm mt-1 block">A&ntilde;os de experiencia</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl lg:text-4xl font-heading font-bold text-gold counter" data-target="5">0</span>
+                            <span class="text-white/50 text-sm mt-1 block">L&iacute;neas de productos</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl lg:text-4xl font-heading font-bold text-gold counter" data-target="1000">0</span>
+                            <span class="text-white/50 text-sm mt-1 block">Clientes satisfechos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="hero-visual hidden lg:block relative">
+                    <div class="relative">
+                        <!-- Main card -->
+                        <div class="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 shadow-2xl">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl p-6 flex flex-col items-center justify-center text-center aspect-square hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="thermometer-snowflake" class="w-10 h-10 text-gold mb-3"></i>
+                                    <span class="text-white font-heading font-semibold text-sm">L&iacute;nea Fr&iacute;o</span>
+                                </div>
+                                <div class="bg-gradient-to-br from-red-500/20 to-red-500/5 rounded-2xl p-6 flex flex-col items-center justify-center text-center aspect-square hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="flame" class="w-10 h-10 text-red-400 mb-3"></i>
+                                    <span class="text-white font-heading font-semibold text-sm">L&iacute;nea Calor</span>
+                                </div>
+                                <div class="bg-gradient-to-br from-accent/20 to-accent/5 rounded-2xl p-6 flex flex-col items-center justify-center text-center aspect-square hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="store" class="w-10 h-10 text-accent-light mb-3"></i>
+                                    <span class="text-white font-heading font-semibold text-sm">L&iacute;nea Comercial</span>
+                                </div>
+                                <div class="bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 rounded-2xl p-6 flex flex-col items-center justify-center text-center aspect-square hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="chef-hat" class="w-10 h-10 text-emerald-400 mb-3"></i>
+                                    <span class="text-white font-heading font-semibold text-sm">Gastronom&iacute;a</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge -->
+                        <div class="absolute -top-6 -right-6 bg-gold text-primary rounded-2xl px-5 py-3 shadow-lg shadow-gold/20 floating-badge">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="font-heading font-bold text-sm">Garant&iacute;a Total</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge 2 -->
+                        <div class="absolute -bottom-4 -left-6 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl px-5 py-3 shadow-lg floating-badge-2">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="wrench" class="w-5 h-5 text-gold"></i>
+                                <span class="font-heading font-semibold text-sm">Servicio T&eacute;cnico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator">
+            <span class="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
+            <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-1.5 bg-gold rounded-full scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 lg:py-32 bg-white relative overflow-hidden">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <!-- Image side -->
+                <div class="about-image relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-primary via-[#1a2744] to-accent flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <i data-lucide="building-2" class="w-20 h-20 text-gold mx-auto mb-4"></i>
+                                <span class="text-white/80 font-heading text-2xl font-bold">Desde 2009</span>
+                                <span class="block text-white/50 mt-2">Equipando comercios</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience badge -->
+                    <div class="absolute -bottom-6 -right-6 lg:-right-10 bg-gold text-primary rounded-2xl p-6 shadow-xl shadow-gold/20">
+                        <span class="block font-heading font-bold text-4xl">+15</span>
+                        <span class="block text-sm font-semibold">A&ntilde;os</span>
+                    </div>
+                </div>
+
+                <!-- Content side -->
+                <div class="about-content">
+                    <div class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full mb-6">
+                        <i data-lucide="info" class="w-4 h-4"></i>
+                        <span class="text-sm font-semibold uppercase tracking-wider">Sobre Nosotros</span>
+                    </div>
+
+                    <h2 class="font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-primary leading-tight mb-6">
+                        L&iacute;deres en equipamiento
+                        <span class="text-accent"> comercial</span>
+                    </h2>
+
+                    <p class="text-secondary text-lg leading-relaxed mb-6">
+                        Con m&aacute;s de 15 a&ntilde;os de experiencia, nos ubicamos como una de las mejores empresas en venta de equipamientos para comercios y negocios.
+                    </p>
+                    <p class="text-secondary/70 leading-relaxed mb-8">
+                        Contamos con nuestra sucursal en la zona de San Mart&iacute;n, cerca de la General Paz. Satisfacemos las necesidades de nuestros clientes y los asesoramos con el mejor nivel para que adquiera el producto que realmente necesita. Armamos proyectos de acuerdo a los requerimientos sin importar la magnitud de los mismos.
+                    </p>
+
+                    <!-- Feature list -->
+                    <div class="space-y-4 mb-10">
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
+                                <i data-lucide="package" class="w-6 h-6 text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-primary text-lg">Equipamiento Comercial</h4>
+                                <p class="text-secondary/70 text-sm mt-1">Amplia disponibilidad de productos para cubrir sus necesidades.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors duration-300">
+                                <i data-lucide="lightbulb" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-primary text-lg">Innovaci&oacute;n</h4>
+                                <p class="text-secondary/70 text-sm mt-1">Dise&ntilde;o y vanguardia en equipos de alto rendimiento para gastronom&iacute;a.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i data-lucide="headset" class="w-6 h-6 text-emerald-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-primary text-lg">Asesoramiento Experto</h4>
+                                <p class="text-secondary/70 text-sm mt-1">Le brindamos el mejor asesoramiento para su proyecto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="group inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-heading font-semibold hover:bg-secondary transition-all duration-300 hover:scale-105">
+                        Cont&aacute;ctenos
+                        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 lg:py-32 bg-surface relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%230F172A&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="settings" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Servicios</span>
+                </div>
+                <h2 class="section-title font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-primary leading-tight mb-6">
+                    Soluciones integrales para
+                    <span class="text-accent">su negocio</span>
+                </h2>
+                <p class="text-secondary/70 text-lg leading-relaxed">
+                    A continuaci&oacute;n encontrar&aacute; los servicios que brindamos. Desde venta de equipamiento hasta servicio t&eacute;cnico y asesoramiento personalizado para su comercio o emprendimiento gastron&oacute;mico.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Equipamiento Comercial -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-gold/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="shopping-bag" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">Equipamiento Comercial</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Contamos con una amplia disponibilidad de productos para cubrir todas las necesidades de su comercio o negocio.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Exhibidoras verticales y horizontales
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Freezers y heladeras comerciales
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            G&oacute;ndolas y mobiliario comercial
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Balanzas e impresoras fiscales
+                        </li>
+                    </ul>
+                    <a href="#products" class="flex items-center gap-2 text-gold font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Ver productos</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Servicio Tecnico -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-accent/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="wrench" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">Servicio T&eacute;cnico</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Contamos con recursos altamente capacitados para resolver cualquier tipo de inconveniente t&eacute;cnico con sus equipos comerciales y gastron&oacute;micos.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>
+                            Diagn&oacute;stico y reparaci&oacute;n en taller
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>
+                            Mantenimiento preventivo de equipos
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>
+                            Repuestos originales y garant&iacute;a
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-accent flex-shrink-0"></i>
+                            Atenci&oacute;n r&aacute;pida y personalizada
+                        </li>
+                    </ul>
+                    <a href="#contact" class="flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Solicitar turno</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Reparacion de Equipos -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500/20 to-amber-500/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="settings-2" class="w-8 h-8 text-amber-500"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">Reparaci&oacute;n de Equipos</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Servicio especializado en la reparaci&oacute;n de equipos gastron&oacute;micos y comerciales. Trabajamos con todas las marcas del mercado.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                            Balanzas comerciales y de precisi&oacute;n
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                            Cortadoras de fiambre y picadoras
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                            Pancheras y equipos de calor
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-500 flex-shrink-0"></i>
+                            Registradoras e impresoras fiscales
+                        </li>
+                    </ul>
+                    <a href="#contact" class="flex items-center gap-2 text-amber-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Consultar reparaci&oacute;n</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4: Linea Gastronomia -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="chef-hat" class="w-8 h-8 text-emerald-500"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">L&iacute;nea Gastronom&iacute;a</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Dise&ntilde;o y vanguardia en equipos de alto rendimiento para la gastronom&iacute;a. Todo lo que su cocina profesional necesita.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                            Anafes de 4 y 6 hornallas industriales
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                            Freidoras de 18Lts y hornos para pizza
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                            Carliteros y pancheras profesionales
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                            Cortadoras de fiambre industriales
+                        </li>
+                    </ul>
+                    <a href="#products" class="flex items-center gap-2 text-emerald-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Ver cat&aacute;logo</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5: Plastificado de Rejillas -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-violet-500/20 to-violet-500/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="layers" class="w-8 h-8 text-violet-500"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">Plastificado de Rejillas</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Servicio especializado de plastificado de rejillas para heladeras, freezers y exhibidoras. Extendemos la vida &uacute;til de sus equipos de fr&iacute;o.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-violet-500 flex-shrink-0"></i>
+                            Rejillas para heladeras y freezers
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-violet-500 flex-shrink-0"></i>
+                            Rejillas de exhibidoras comerciales
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-violet-500 flex-shrink-0"></i>
+                            Acabado profesional y duradero
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-violet-500 flex-shrink-0"></i>
+                            Presupuestos personalizados sin cargo
+                        </li>
+                    </ul>
+                    <a href="#contact" class="flex items-center gap-2 text-violet-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Pedir presupuesto</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6: Proyectos a Medida -->
+                <div class="service-card group bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-xl hover:border-gold/30 transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="clipboard-list" class="w-8 h-8 text-gold"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary mb-3">Proyectos a Medida</h3>
+                    <p class="text-secondary/70 leading-relaxed mb-4">Armamos proyectos completos de equipamiento de acuerdo a los requerimientos de nuestros clientes, sin importar la magnitud de los mismos.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Asesoramiento integral personalizado
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Dise&ntilde;o de layout para su comercio
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Presupuesto completo sin compromiso
+                        </li>
+                        <li class="flex items-center gap-2 text-secondary/70 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Instalaci&oacute;n y puesta en marcha
+                        </li>
+                    </ul>
+                    <a href="#contact" class="flex items-center gap-2 text-gold font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                        <span>Consultar proyecto</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trust bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="trust-item flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-gold mb-3"></i>
+                    <span class="font-heading font-bold text-2xl text-primary">100%</span>
+                    <span class="text-secondary/60 text-sm mt-1">Garant&iacute;a en productos</span>
+                </div>
+                <div class="trust-item flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border">
+                    <i data-lucide="truck" class="w-8 h-8 text-accent mb-3"></i>
+                    <span class="font-heading font-bold text-2xl text-primary">Env&iacute;os</span>
+                    <span class="text-secondary/60 text-sm mt-1">A todo el pa&iacute;s</span>
+                </div>
+                <div class="trust-item flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border">
+                    <i data-lucide="badge-check" class="w-8 h-8 text-emerald-500 mb-3"></i>
+                    <span class="font-heading font-bold text-2xl text-primary">Marcas</span>
+                    <span class="text-secondary/60 text-sm mt-1">L&iacute;deres del mercado</span>
+                </div>
+                <div class="trust-item flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border">
+                    <i data-lucide="headset" class="w-8 h-8 text-violet-500 mb-3"></i>
+                    <span class="font-heading font-bold text-2xl text-primary">Soporte</span>
+                    <span class="text-secondary/60 text-sm mt-1">Post-venta permanente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary via-[#1a2744] to-primary"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Ccircle cx=&quot;1&quot; cy=&quot;1&quot; r=&quot;1&quot; fill=&quot;%23D4A853&quot;/%3E%3C/svg%3E');"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="cta-title font-heading font-bold text-3xl lg:text-4xl text-white mb-4">
+                Ante cualquier inquietud, <span class="text-gold">no dude en consultarnos</span>
+            </h2>
+            <p class="text-white/60 text-lg mb-8 max-w-2xl mx-auto">
+                Contamos con un equipo especializado para asesorarlo en su emprendimiento.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="group inline-flex items-center gap-3 bg-gold text-primary px-8 py-4 rounded-xl font-heading font-semibold text-base hover:bg-gold-light transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gold/20">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Enviar Consulta
+                </a>
+                <a href="tel:01167549667" class="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-xl font-heading font-medium text-base hover:bg-white/5 transition-all duration-300">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Llamar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 lg:py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Nuestros Productos</span>
+                </div>
+                <h2 class="section-title font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-primary leading-tight mb-6">
+                    Cat&aacute;logo de
+                    <span class="text-gold">productos</span>
+                </h2>
+                <p class="text-secondary/70 text-lg leading-relaxed">
+                    Encontr&aacute; los productos dentro de cada una de nuestras l&iacute;neas.
+                </p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="product-filter active font-heading font-medium text-sm px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer" data-filter="all">Todas las l&iacute;neas</button>
+                <button class="product-filter font-heading font-medium text-sm px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer" data-filter="frio">L&iacute;nea Fr&iacute;o</button>
+                <button class="product-filter font-heading font-medium text-sm px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer" data-filter="calor">L&iacute;nea Calor</button>
+                <button class="product-filter font-heading font-medium text-sm px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer" data-filter="comercial">L&iacute;nea Comercial</button>
+                <button class="product-filter font-heading font-medium text-sm px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer" data-filter="gastronomia">L&iacute;nea Gastronom&iacute;a</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+                <!-- Linea Calor -->
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Anafe 4 Hornallas</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Anafe 6 Hornallas</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Freidora 18Lts</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Horno para Pizza</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Panchera</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="calor">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-red-50 to-orange-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-red-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Calor</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Carlitero</h3>
+                        <p class="text-secondary/60 text-sm mt-1">Equipamiento gastron&oacute;mico</p>
+                    </div>
+                </div>
+
+                <!-- Linea Frio -->
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="frio">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-blue-50 to-cyan-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="snowflake" class="w-16 h-16 text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-accent text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Fr&iacute;o</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Exhibidora Vertical 2P</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea de fr&iacute;o comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="frio">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-blue-50 to-cyan-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="snowflake" class="w-16 h-16 text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-accent text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Fr&iacute;o</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Exhibidora Vertical</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea de fr&iacute;o comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="frio">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-blue-50 to-cyan-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="snowflake" class="w-16 h-16 text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-accent text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Fr&iacute;o</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Freezer 1000Lts</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea de fr&iacute;o comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="frio">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-blue-50 to-cyan-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="snowflake" class="w-16 h-16 text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-accent text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Fr&iacute;o</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">G&oacute;ndola Verdulera</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea de fr&iacute;o comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="frio">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-blue-50 to-cyan-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="snowflake" class="w-16 h-16 text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-accent text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Fr&iacute;o</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Heladera Batea</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea de fr&iacute;o comercial</p>
+                    </div>
+                </div>
+
+                <!-- Linea Comercial -->
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="comercial">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-amber-50 to-yellow-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="scale" class="w-16 h-16 text-amber-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold text-primary text-xs font-heading font-semibold px-3 py-1 rounded-full">Comercial</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Balanza con Impresora</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="comercial">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-amber-50 to-yellow-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="scale" class="w-16 h-16 text-amber-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold text-primary text-xs font-heading font-semibold px-3 py-1 rounded-full">Comercial</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Balanza Beb&eacute;</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea comercial</p>
+                    </div>
+                </div>
+
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="comercial">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-amber-50 to-yellow-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="printer" class="w-16 h-16 text-amber-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gold text-primary text-xs font-heading font-semibold px-3 py-1 rounded-full">Comercial</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Impresora Fiscal</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea comercial</p>
+                    </div>
+                </div>
+
+                <!-- Linea Gastronomia -->
+                <div class="product-card group rounded-2xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-xl transition-all duration-500" data-category="gastronomia">
+                    <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-emerald-50 to-green-50">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="chef-hat" class="w-16 h-16 text-emerald-300 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-emerald-500 text-white text-xs font-heading font-semibold px-3 py-1 rounded-full">Gastronom&iacute;a</div>
+                        <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-heading font-semibold text-sm border border-white/30 px-4 py-2 rounded-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Ver Detalle</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-semibold text-primary">Cortadora de Fiambre</h3>
+                        <p class="text-secondary/60 text-sm mt-1">L&iacute;nea gastronom&iacute;a</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 lg:py-32 bg-primary relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="star" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Testimonios</span>
+                </div>
+                <h2 class="section-title font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-white leading-tight mb-4">
+                    Lo que dicen
+                    <span class="text-gold">nuestros clientes</span>
+                </h2>
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-6 h-6 text-gold fill-gold"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-gold fill-gold"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-gold fill-gold"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-gold fill-gold"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-gold fill-gold"></i>
+                    </div>
+                    <span class="text-white font-heading font-bold text-2xl">4.9</span>
+                    <span class="text-white/50 text-sm">en Google Maps</span>
+                </div>
+                <p class="text-white/50 text-lg leading-relaxed">
+                    La satisfacci&oacute;n de nuestros clientes es nuestro mayor orgullo. Estas son algunas de las opiniones que nos dejaron.
+                </p>
+            </div>
+
+            <!-- Testimonials Slider -->
+            <div class="testimonial-slider relative overflow-hidden">
+                <div class="testimonial-track flex transition-transform duration-700 ease-out" id="testimonial-track">
+                    <!-- Testimonial 1 - Guadalupe -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Excelente atenci&oacute;n, responden tooodaaass tus dudas y asesoran 10/10, sin duda seguir&eacute; comprando."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center">
+                                    <span class="text-gold font-heading font-bold text-sm">G</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Guadalupe</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Maps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 - Jorge -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"De todo tienen para tu primer emprendimiento, atenci&oacute;n personalizada y no te matan con los precios."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent-light font-heading font-bold text-sm">J</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Jorge</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 - JuanSe -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Buena atenci&oacute;n. Precios variados. Tambi&eacute;n hacen reparaciones."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                                    <span class="text-emerald-400 font-heading font-bold text-sm">J</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">JuanSe</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 - Walter -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Buenos precios, atenci&oacute;n y asesoramiento, para recomendar!"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center">
+                                    <span class="text-red-400 font-heading font-bold text-sm">W</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Walter</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 - Fiorella -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Tienen de todo en tornillos y bulones. La atenci&oacute;n es muy buena."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-violet-500/20 rounded-full flex items-center justify-center">
+                                    <span class="text-violet-400 font-heading font-bold text-sm">F</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Fiorella</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 - NyA Celebraciones -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Excelente su atenci&oacute;n y asesoramiento."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center">
+                                    <span class="text-gold font-heading font-bold text-sm">N</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">NyA Celebraciones</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 7 - Fiamma -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Muy buen lugar gastron&oacute;mico, lo recomiendo."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent-light font-heading font-bold text-sm">F</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Fiamma</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 8 - Claudio -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Atienden bien y precios muy buenos."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                                    <span class="text-emerald-400 font-heading font-bold text-sm">C</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Claudio</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 9 - Mariela -->
+                    <div class="testimonial-slide w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-colors duration-300">
+                            <div class="flex gap-1 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                                <i data-lucide="star" class="w-5 h-5 text-gold fill-gold"></i>
+                            </div>
+                            <p class="text-white/70 leading-relaxed mb-6 text-sm">"Muy buena atenci&oacute;n.. y productos!"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center">
+                                    <span class="text-red-400 font-heading font-bold text-sm">M</span>
+                                </div>
+                                <div>
+                                    <span class="text-white font-heading font-semibold text-sm block">Mariela</span>
+                                    <span class="text-white/40 text-xs flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Maps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="flex items-center justify-center gap-4 mt-10">
+                    <button id="testimonial-prev" class="w-12 h-12 bg-white/10 hover:bg-gold/20 border border-white/10 rounded-full flex items-center justify-center text-white hover:text-gold transition-all duration-300 cursor-pointer" aria-label="Testimonio anterior">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <div class="flex gap-2" id="testimonial-dots"></div>
+                    <button id="testimonial-next" class="w-12 h-12 bg-white/10 hover:bg-gold/20 border border-white/10 rounded-full flex items-center justify-center text-white hover:text-gold transition-all duration-300 cursor-pointer" aria-label="Testimonio siguiente">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Google Reviews Link -->
+            <div class="text-center mt-10">
+                <a href="https://www.google.com/maps/place/Equipamientos+Tauro/@-34.5812328,-58.5415259,17z/data=!4m8!3m7!1s0x95bcb777a2700f05:0x8d72e81c210b0a17!8m2!3d-34.5812328!4d-58.5415259!9m1!1b1!16s%2Fg%2F11c1rcrwrb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/50 hover:text-gold text-sm transition-colors duration-300">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Ver todas las opiniones en Google Maps
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 lg:py-32 bg-surface relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Contacto</span>
+                </div>
+                <h2 class="section-title font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-primary leading-tight mb-6">
+                    Pong&aacute;se en
+                    <span class="text-gold">contacto</span>
+                </h2>
+                <p class="text-secondary/70 text-lg leading-relaxed">
+                    Ante cualquier inquietud, no dude en consultarnos. Contamos con un equipo capacitado para brindarle el mejor servicio.
+                </p>
+            </div>
+
+            <!-- Contact Data Cards - Full width with hover fill effect -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Direccion -->
+                <a href="https://www.google.com/maps/place/Equipamientos+Tauro/@-34.5812328,-58.5415259,17z" target="_blank" rel="noopener noreferrer" class="contact-fill-card group relative bg-white rounded-2xl p-7 border border-border overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:border-transparent">
+                    <div class="contact-fill-bg absolute inset-0 bg-primary rounded-2xl origin-bottom scale-y-0 transition-transform duration-500 ease-out group-hover:scale-y-100"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mb-5 transition-colors duration-500 group-hover:bg-gold/20">
+                            <i data-lucide="map-pin" class="w-7 h-7 text-gold"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-primary mb-2 transition-colors duration-500 group-hover:text-white">Direcci&oacute;n</h4>
+                        <p class="text-secondary/70 text-sm leading-relaxed transition-colors duration-500 group-hover:text-white/70">Av. Balb&iacute;n 2000<br>San Mart&iacute;n, Buenos Aires<br>CP 1650</p>
+                        <div class="mt-4 flex items-center gap-1.5 text-gold text-xs font-semibold opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span>Ver en mapa</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Telefono -->
+                <a href="tel:01167549667" class="contact-fill-card group relative bg-white rounded-2xl p-7 border border-border overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:border-transparent">
+                    <div class="contact-fill-bg absolute inset-0 bg-accent rounded-2xl origin-bottom scale-y-0 transition-transform duration-500 ease-out group-hover:scale-y-100"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-5 transition-colors duration-500 group-hover:bg-white/20">
+                            <i data-lucide="phone" class="w-7 h-7 text-accent transition-colors duration-500 group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-primary mb-2 transition-colors duration-500 group-hover:text-white">Tel&eacute;fono</h4>
+                        <p class="text-secondary/70 text-sm leading-relaxed transition-colors duration-500 group-hover:text-white/70">(011) 6754-9667</p>
+                        <p class="text-secondary/50 text-xs mt-1 transition-colors duration-500 group-hover:text-white/50">Lun a Vie 10-19 hs | S&aacute;b 10-15 hs</p>
+                        <div class="mt-4 flex items-center gap-1.5 text-white text-xs font-semibold opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span>Llamar ahora</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Horario -->
+                <div class="contact-fill-card group relative bg-white rounded-2xl p-7 border border-border overflow-hidden cursor-default transition-all duration-500 hover:shadow-2xl hover:border-transparent">
+                    <div class="contact-fill-bg absolute inset-0 bg-emerald-600 rounded-2xl origin-bottom scale-y-0 transition-transform duration-500 ease-out group-hover:scale-y-100"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-5 transition-colors duration-500 group-hover:bg-white/20">
+                            <i data-lucide="clock" class="w-7 h-7 text-emerald-500 transition-colors duration-500 group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-primary mb-2 transition-colors duration-500 group-hover:text-white">Horario</h4>
+                        <p class="text-secondary/70 text-sm leading-relaxed transition-colors duration-500 group-hover:text-white/70">Lun a Vie: 10 - 19 hs<br>S&aacute;b: 10 - 15 hs</p>
+                        <p class="text-secondary/50 text-xs mt-1 transition-colors duration-500 group-hover:text-white/50">Domingos cerrado</p>
+                    </div>
+                </div>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/541167549667" target="_blank" rel="noopener noreferrer" class="contact-fill-card group relative bg-white rounded-2xl p-7 border border-border overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:border-transparent">
+                    <div class="contact-fill-bg absolute inset-0 bg-[#25D366] rounded-2xl origin-bottom scale-y-0 transition-transform duration-500 ease-out group-hover:scale-y-100"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-[#25D366]/10 rounded-2xl flex items-center justify-center mb-5 transition-colors duration-500 group-hover:bg-white/20">
+                            <svg class="w-7 h-7 text-[#25D366] transition-colors duration-500 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-primary mb-2 transition-colors duration-500 group-hover:text-white">WhatsApp</h4>
+                        <p class="text-secondary/70 text-sm leading-relaxed transition-colors duration-500 group-hover:text-white/70">Escribinos por WhatsApp para una respuesta r&aacute;pida</p>
+                        <div class="mt-4 flex items-center gap-1.5 text-white text-xs font-semibold opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span>Enviar mensaje</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Contact Form -->
+                <div>
+                    <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-border h-full">
+                        <h3 class="font-heading font-bold text-2xl text-primary mb-2">Env&iacute;enos su consulta</h3>
+                        <p class="text-secondary/60 mb-8">Complete el formulario y nos pondremos en contacto a la brevedad.</p>
+
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-primary mb-2">Nombre *</label>
+                                    <input type="text" id="contact-name" name="name" required class="w-full px-4 py-3 rounded-xl border border-border bg-surface text-primary focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all duration-300 text-sm" placeholder="Su nombre">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-primary mb-2">Email *</label>
+                                    <input type="email" id="contact-email" name="email" required class="w-full px-4 py-3 rounded-xl border border-border bg-surface text-primary focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all duration-300 text-sm" placeholder="Su email">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-phone" class="block text-sm font-medium text-primary mb-2">Tel&eacute;fono *</label>
+                                <input type="tel" id="contact-phone" name="phone" required class="w-full px-4 py-3 rounded-xl border border-border bg-surface text-primary focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all duration-300 text-sm" placeholder="Su tel&eacute;fono">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-primary mb-2">Mensaje *</label>
+                                <textarea id="contact-message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-border bg-surface text-primary focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all duration-300 text-sm resize-none" placeholder="Escriba su consulta..."></textarea>
+                            </div>
+                            <button type="submit" class="group w-full md:w-auto inline-flex items-center justify-center gap-3 bg-gold text-white px-10 py-4 rounded-xl font-heading font-semibold text-base hover:bg-gold-light hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gold/20 cursor-pointer">
+                                <i data-lucide="send" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Map (right side, matches form height) -->
+                <div>
+                    <div class="rounded-2xl overflow-hidden shadow-sm border border-border h-full min-h-[400px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.0!2d-58.5415259!3d-34.5812328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDM0JzUyLjQiUyA1OMKwMzInMjkuNSJX!5e0!3m2!1ses-419!2sar!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicacion de Equipamientos Tauro"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
+                            <span class="text-primary font-heading font-bold text-lg">T</span>
+                        </div>
+                        <div>
+                            <span class="text-white font-heading font-bold text-xl tracking-wide">TAURO</span>
+                            <span class="block text-xs text-white font-light tracking-widest uppercase">Equipamientos</span>
+                        </div>
+                    </div>
+                    <p class="text-white leading-relaxed max-w-md mb-6">
+                        M&aacute;s de 15 a&ntilde;os equipando comercios y negocios con los mejores productos y servicio t&eacute;cnico especializado en San Mart&iacute;n, Buenos Aires.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold text-white mb-6">Navegaci&oacute;n</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#hero" class="text-white hover:text-gold transition-colors duration-300 text-sm">Inicio</a></li>
+                        <li><a href="#about" class="text-white hover:text-gold transition-colors duration-300 text-sm">Sobre Nosotros</a></li>
+                        <li><a href="#services" class="text-white hover:text-gold transition-colors duration-300 text-sm">Servicios</a></li>
+                        <li><a href="#products" class="text-white hover:text-gold transition-colors duration-300 text-sm">Productos</a></li>
+                        <li><a href="#contact" class="text-white hover:text-gold transition-colors duration-300 text-sm">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-semibold text-white mb-6">Contacto</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-white text-sm">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            Av. Balb&iacute;n 2000, San Mart&iacute;n
+                        </li>
+                        <li>
+                            <a href="tel:01167549667" class="flex items-center gap-3 text-white hover:text-gold transition-colors text-sm">
+                                <i data-lucide="phone" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                                (011) 6754-9667
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white text-sm">&copy; <script>document.write(new Date().getFullYear())</script> Equipamientos Tauro. Todos los derechos reservados.</p>
+                <p class="text-white text-sm">Dise&ntilde;ado por <a href="http://www.dypconsultora.com.ar/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-gold-light transition-colors">D y P Consultora</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button (right side with glow) -->
+    <a href="https://wa.me/541167549667" target="_blank" rel="noopener noreferrer" class="whatsapp-btn fixed bottom-6 right-6 z-40 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" aria-label="Contactar por WhatsApp">
+        <span class="whatsapp-glow absolute inset-0 rounded-full"></span>
+        <svg class="w-8 h-8 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Back to Top (left side with transparency) -->
+    <button id="back-to-top" class="fixed bottom-6 left-6 z-40 w-12 h-12 bg-primary/40 backdrop-blur-md text-white/70 rounded-full flex items-center justify-center border border-white/10 opacity-0 translate-y-4 transition-all duration-300 cursor-pointer hover:bg-primary/70 hover:text-white" aria-label="Volver arriba">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
